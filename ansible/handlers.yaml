@@ -1,6 +1,7 @@
 ---
 - name: Play1
   hosts: all
+  become: true
   tasks:
    - name: Install Nginx
      yum: pkg=nginx update_cache=true
