@@ -1,0 +1,9 @@
+- name: Override Change Result
+  hosts: all
+  gather_facts: false
+  tasks:
+  - command: /bin/false
+    register: result
+    ignore_errors: True
+    changed_when:
+    - result.rc == 0

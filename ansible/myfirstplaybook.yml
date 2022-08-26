@@ -1,0 +1,20 @@
+--- # My First YAML playbook for ansible
+- hosts: dev
+  connection: ssh
+  become: true
+  gather_facts: no
+  pre_tasks:
+  - name: pre-task
+    debug: 
+      msg: "This is a pre-task, it will run before main task"
+  tasks:
+  - name: Install Curl
+    command: yum install curl
+  - name: Install Curl with Module
+    yum: 
+      name=curl
+      state=present
+  post_tasks:
+  - name: post-task
+    debug: 
+      msg: "This is a post-task, it will run after main task"

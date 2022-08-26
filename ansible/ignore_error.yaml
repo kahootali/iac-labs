@@ -1,0 +1,9 @@
+- name: Ignore Error
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: this will not be counted as a failure
+    command: "false"
+    ignore_errors: yes 
+  - name: this will be counted as a success
+    command: "echo Hello"

@@ -1,0 +1,4 @@
+[dev]
+server.dev
+[prod]
+server.prod

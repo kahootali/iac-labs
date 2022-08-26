@@ -1,0 +1,22 @@
+- name: Play1-Control Failure Play
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Fail if return is not Hello
+    command: "echo hello"
+    register: cmd_output
+    failed_when: cmd_output.stdout != "hello"
+  - name: Fail if return is zero
+    command: "false"
+    register: cmd_output
+    failed_when: cmd_output.rc == 0
+- name: Play2-Overriding Change result Play
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Change if return is 2
+    command: "false"
+    register: result
+    failed_when: result.rc == 0
+    changed_when:
+    - result.rc == 2
