@@ -1,0 +1,27 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: Ansible command module multiple commands
+    command: "touch {{ item }}"
+    with_items:
+    - hello.txt
+    - hello2.txt
+    - hello3.txt
+    args:
+      chdir: ~/tmp/
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: Ansible shell module multiple commands
+    shell: "cat {{ item }}"
+    with_items:
+    - hello.txt
+    - hello2.txt
+    - hello3.txt
+    args:
+      chdir: ~/tmp/
+
+
+

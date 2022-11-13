@@ -2,9 +2,14 @@
 - hosts: all
   user : ec2-user
   become: true
-  tasks:
+  pre_tasks:
   - name: Ping
     ping:
+  tasks:
+  - yum:
+      name=nginx
+      state=present
+  post_tasks:
   - name: make sure nginx is running
     service: 
       name=nginx 
