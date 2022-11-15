@@ -33,4 +33,7 @@ resource "github_branch_protection" "branch_protection" {
 resource "github_branch" "development" {
   repository = "repo-created-with-terraform"
   branch     = "development"
+  depends_on = [
+    github_repository.my_repo
+  ]
 }
